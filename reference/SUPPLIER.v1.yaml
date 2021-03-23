@@ -1,0 +1,298 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Supplier",
+    "version": "1.0",
+    "description": "БЭЛТГЭН НИЙЛҮҮЛЭГЧЭЭС БАРААНЫ МЭДЭЭЛЭЛ ХҮЛЭЭН АВАХ API"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/Supplier/AddCategory": {
+      "parameters": [],
+      "post": {
+        "summary": "Add Category",
+        "operationId": "19002011",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Барааны ангилал нэмэх",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Supplier/EditCategory": {
+      "post": {
+        "summary": "Edit Category",
+        "operationId": "19002012",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              },
+              "examples": {
+                "Create User Bob Fellow": {
+                  "value": {
+                    "firstName": "Bob",
+                    "lastName": "Fellow",
+                    "email": "bob.fellow@gmail.com",
+                    "dateOfBirth": "1996-08-24"
+                  }
+                }
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": "Барааны ангилал засварлах"
+      },
+      "parameters": []
+    },
+    "/Supplier/DetailCategory": {
+      "post": {
+        "summary": "Detail Category",
+        "operationId": "19002013",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Ангилалын мэдээллийн дэлгэрэнгүй"
+      }
+    },
+    "/Supplier/AddProduct": {
+      "post": {
+        "summary": "Add Product",
+        "operationId": "19002001",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Шинэ бараа нэмэх"
+      }
+    },
+    "/Supplier/EditProduct": {
+      "post": {
+        "summary": "Edit Product",
+        "operationId": "19002002",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Барааны мэдээлэл засварлах"
+      }
+    },
+    "/Supplier/DetailProduct": {
+      "post": {
+        "summary": "Detail Product",
+        "operationId": "19002003",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Бараанмы дэлгэрэнгүй мэдээлэл"
+      }
+    },
+    "/Supplier/ListProduct": {
+      "post": {
+        "summary": "List Product",
+        "operationId": "19002000",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Барааны жагсаалт"
+      }
+    },
+    "/Supplier/UpdateProductPrice": {
+      "post": {
+        "summary": "Update Product Price",
+        "operationId": "19002006",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Барааны үндсэн үнийн мэдээлэл"
+      }
+    },
+    "/Supplier/UpdateProductBalance": {
+      "post": {
+        "summary": "Update Product Balance",
+        "operationId": "19002007",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Барааны үлдэгдэлийн мэдээлэл"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Category": {
+        "title": "Category",
+        "type": "object",
+        "description": "Барааны ангилал",
+        "properties": {
+          "catId": {
+            "type": "string"
+          },
+          "": {
+            "type": "string"
+          },
+          "parentCatId": {
+            "type": "integer"
+          },
+          "parantCatName": {
+            "type": "string"
+          }
+        }
+      },
+      "Product": {
+        "description": "",
+        "type": "object",
+        "properties": {
+          "productCode": {
+            "type": "string",
+            "minLength": 1
+          },
+          "Name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "catId": {
+            "type": "number"
+          },
+          "Description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "supplierId": {
+            "type": "number"
+          },
+          "catName": {
+            "type": "string",
+            "minLength": 1
+          },
+          "supplierName": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "productCode",
+          "Name",
+          "catId",
+          "Description",
+          "supplierId",
+          "catName",
+          "supplierName"
+        ]
+      },
+      "ProductBalance": {
+        "description": "",
+        "type": "object",
+        "properties": {
+          "productCode": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "price": {
+            "type": "number"
+          },
+          "availableQty": {
+            "type": "number"
+          },
+          "catId": {
+            "type": "number"
+          },
+          "catName": {
+            "type": "string",
+            "minLength": 1
+          },
+          "supplierId": {
+            "type": "number"
+          },
+          "supplierName": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "productCode",
+          "name",
+          "price",
+          "availableQty",
+          "catId",
+          "catName",
+          "supplierId",
+          "supplierName"
+        ]
+      },
+      "ProductPrice": {
+        "description": "",
+        "type": "object",
+        "properties": {
+          "productCode": {
+            "type": "number"
+          },
+          "price": {
+            "type": "number"
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "endDate": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "productCode",
+          "price"
+        ]
+      }
+    }
+  }
+}
